@@ -1,22 +1,22 @@
-当一个题目可以接受多种正确答案,即有多组解的时候,题目就必须被Special Judge．
+当一个题目可以接受多种正确答案,即有多组解的时候,题目就必须被 Special Judge。
 
-Special Judge程序使用输入数据和一些其他信息来判答你程序的输出，并将判答结果返回．
+Special Judge 程序使用输入数据和一些其他信息来判答你程序的输出，并将判答结果返回．
 
-洛谷的SPJ采用了跟Codeforces一样的SPJ标准，即Testlib库。
+洛谷的 SPJ 采用了跟 Codeforces 一样的 SPJ 标准，即 Testlib 库。
 
 下载地址：
 
 
 https://github.com/MikeMirzayanov/testlib/archive/0.9.12.zip
 
-\_\_Checker的编译参数为：g++ -fno-asm -std=c++14 -O2 ，即已经开启C++14以及O2优化。\_\_
+\_\_Checker的编译参数为：g++ -fno-asm -std=c++14 -O2 ，即已经开启 C++14 以及 O2 优化。\_\_
 
 ## 使用方法
 
-只能使用c++。不过写spj就跟写别的题目一样，只是输入输出有所不同。首先新建文件checker.cpp。然后将这个压缩包的里的所有内容解压到你的checker.cpp相同的文件夹。
+只能使用 C++。不过写 spj 就跟写别的题目一样，只是输入输出有所不同。首先新建文件 checker.cpp。然后将这个压缩包的里的所有内容解压到你的 checker.cpp 相同的文件夹。
 
 
-这里给出一个例子，当标准输出和选手输出的差小于0.01，那么可以AC，否则WA。
+这里给出一个例子，当标准输出和选手输出的差小于 0.01，那么可以 AC，否则 WA。
 
 ```cpp
 #include "testlib.h"
@@ -33,12 +33,12 @@ int main(int argc, char* argv[]) {
 }
 
 ```
-在程序中，有3个重要的结构体：inf指数据输入文件（本例没有），ouf指选手输出文件，ans指标准答案。
+在程序中，有 3 个重要的结构体：inf 指数据输入文件（本例没有），ouf 指选手输出文件，ans 指标准答案。
 
-然后，可以从这3表结构体读入数据，不需要用到标准输入输出。如果读到的数据和下面的期望不一致，则spj返回fail结果。
+然后，可以从这 3 表结构体读入数据，不需要用到标准输入输出。如果读到的数据和下面的期望不一致，则 spj 返回 fail 结果。
 
 
-这边继续给出一个多行（不定行数）的spj判断：
+这边继续给出一个多行（不定行数）的 spj 判断：
 
 ```cpp
 #include "testlib.h"
@@ -65,15 +65,15 @@ int main(int argc, char* argv[]) {
 
 `void registerTestlibCmd(argc, argv)`
 
-初始化checker，必须在最前面调用一次。
+初始化 checker，必须在最前面调用一次。
 
 `char readChar()`
 
-读入一个char，指针后移一位。
+读入一个 char，指针后移一位。
 
 `char readChar(char c)`
 
-和上面一样，但是只能读到一个字母c
+和上面一样，但是只能读到一个字母 c
 
 `char readSpace()`    
 
@@ -81,23 +81,23 @@ int main(int argc, char* argv[]) {
 
 `string readToken()`
 
-读入一个字符串，但是遇到空格、换行、eof为止、
+读入一个字符串，但是遇到空格、换行、eof 为止、
 
 `long long readLong()`
 
-读入一个longlong/int64
+读入一个 longlong/int64
 
 `long long readLong(long long L, long long R)`
 
-同上，但是限定范围（包括L，R）
+同上，但是限定范围（包括 L，R）
 
 `int readInt()`        
 
-读入一个int
+读入一个 int
 
 `int readInt(int L, int R)`, 
 
-同上，但是限定范围（包括L，R）`
+同上，但是限定范围（包括 L，R）`
 
 `double readReal()`
 
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
 
 `double readReal(double L, double R)`, 
 
-同上，但是限定范围（包括L，R）
+同上，但是限定范围（包括 L，R）
 
 `double readStrictReal(double L, double R, int minPrecision, int maxPrecision)`,
 
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
 
 `string readLine()`    
 
-碰撞一行string，到换行或者eof为止
+碰撞一行 string，到换行或者 eof 为止
 
 `void readEoln()`    
 
@@ -123,27 +123,27 @@ int main(int argc, char* argv[]) {
 
 `void readEof()`    
 
-读入一个eof
+读入一个 eof
 
 
 
 `int eof()`
 
-读完数据后，就可以开始spj了。选手程序能用的功能，spj一样能用。在洛谷中，spj照样受到时间空间限制。而且不能标准输入输出。
+读完数据后，就可以开始 spj 了。选手程序能用的功能，spj 一样能用。在洛谷中，spj 照样受到时间空间限制。而且不能标准输入输出。
 
-最后就是输出啦。输出跟printf有点像。
+最后就是输出啦。输出跟 printf 有点像。
 
 `quitf(\_ok, "The answer is correct. answer is %d", ans); `
 
-给出AC
+给出 AC
 
 `quitf(\_wa, "The answer is wrong: expected = %f, found = %f", jans, pans); `
 
-给出WA
+给出 WA
 
 `quitp(0.5,"Partially Correct get %d percent", 50);`
 
-给出PC(Partially Correct)，并且可以获得该点50%的分数
+给出 PC(Partially Correct)，并且可以获得该点 50% 的分数
 
 
 ## 测试
@@ -155,14 +155,14 @@ int main(int argc, char* argv[]) {
 checker.exe in.txt out.txt ans.txt(Windows)
 
 ```
-其中in.txt out.txt ans.txt分别是放在同一目录下的输入文件、选手输出、标准答案。
+其中 in.txt out.txt ans.txt 分别是放在同一目录下的输入文件、选手输出、标准答案。
 
 程序将返回结果。
 
 
 ## 上传与配置
 
-直接将checker.cpp（必须这个名字）塞入测试数据的压缩包内然后上传就行了。
+直接将 checker.cpp（必须这个名字）塞入测试数据的压缩包内然后上传就行了。
 
 **重要：必须加上“Special Judge”标签**
 
